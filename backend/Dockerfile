@@ -17,11 +17,8 @@ COPY . .
 # Build TypeScript
 RUN npm run build
 
-# Run Prisma migrations
-RUN npx prisma migrate deploy
-
 # Expose port
 EXPOSE 5000
 
-# Start server
-CMD ["npm", "start"]
+# Run migrations and start server
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
