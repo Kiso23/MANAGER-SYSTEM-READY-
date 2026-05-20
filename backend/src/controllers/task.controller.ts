@@ -74,7 +74,7 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const { title, description, completed } = req.body;
 
     // Find task
@@ -123,7 +123,7 @@ export const deleteTask = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     // Find task
     const task = await prisma.task.findUnique({ where: { id } });
