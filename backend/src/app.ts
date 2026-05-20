@@ -2,9 +2,9 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
-import authRoutes from './routes/auth.routes';
-import taskRoutes from './routes/task.routes';
-import { errorMiddleware } from './middleware/error.middleware';
+import authRoutes from './routes/auth.routes.js';
+import taskRoutes from './routes/task.routes.js';
+import { errorMiddleware } from './middleware/error.middleware.js';
 
 const app: Express = express();
 
