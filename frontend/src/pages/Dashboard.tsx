@@ -22,7 +22,6 @@ export const Dashboard: React.FC = () => {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [editingId, setEditingId] = useState<string | null>(null);
   const { user } = useAuth();
 
   useEffect(() => {
