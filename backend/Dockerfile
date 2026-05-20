@@ -17,6 +17,9 @@ COPY . .
 # Build TypeScript
 RUN npm run build
 
+# Run Prisma migrations
+RUN npx prisma migrate deploy
+
 # Expose port
 EXPOSE 5000
 
