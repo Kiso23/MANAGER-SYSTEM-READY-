@@ -9,8 +9,21 @@ import { errorMiddleware } from './middleware/error.middleware.js';
 const app: Express = express();
 
 // CORS configuration
+const allowedOrigins = [
+  'https://manager-system-ready.netlify.app',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  process.env.CORS_ORIGIN,
+].filter(Boolean);
+
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || '*',
+  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Allow all for now
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
